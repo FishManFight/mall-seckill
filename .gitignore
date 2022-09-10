@@ -1,0 +1,16 @@
+# Project exclude paths
+/seckill-api/seckill-goods-api/target/
+/seckill-api/seckill-manager-api/target/
+/seckill-api/seckill-order-api/target/
+/seckill-api/seckill-search-api/target/
+/seckill-api/seckill-user-api/target/
+/seckill-gateway/target/
+/seckill-module/seckill-common/target/
+/seckill-module/seckill-db/target/
+/seckill-module/seckill-web/target/
+/seckill-service/seckill-goods/target/
+/seckill-service/seckill-manager/target/
+/seckill-service/seckill-order/target/
+/seckill-service/seckill-page/target/
+/seckill-service/seckill-search/target/
+/seckill-service/seckill-user/target/

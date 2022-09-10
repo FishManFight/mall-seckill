@@ -1,0 +1,28 @@
+server:
+  port: 18081
+spring:
+  application:
+    name: seckill-goods
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-server:3306/seckill_goods?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  jackson:
+    time-zone: GMT+8
+  cloud:
+    nacos:
+      config:
+        file-extension: yaml
+        server-addr: nacos-server:8848
+      discovery:
+        #Nacos的注册地址
+        server-addr: nacos-server:8848
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    #root: debug开启dubug级别
+    com.seckill.goods.dao: error
+  pattern:
+    console: "%msg%n"

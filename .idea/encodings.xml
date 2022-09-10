@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-goods-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-goods-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-manager-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-manager-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-message-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-message-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-order-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-order-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-page-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-page-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-search-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-search-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-user-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/seckill-user-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-module/seckill-common/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-module/seckill-db/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-module/seckill-web/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-module/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-module/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-canal/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-canal/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-goods/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-goods/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-manager/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-manager/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-message/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-message/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-monitor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-monitor/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-order/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-order/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-page/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-page/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-search/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-search/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-seata/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-seata/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-websocket/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/seckill-websocket/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/seckill-service/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

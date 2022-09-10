@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="seckill-db" />
+        <module name="seckill-message-api" />
+        <module name="seckill-websocket" />
+        <module name="seckill-user" />
+        <module name="seckill-goods" />
+        <module name="seckill-manager-api" />
+        <module name="seckill-search" />
+        <module name="seckill-seata" />
+        <module name="seckill-canal" />
+        <module name="seckill-manager" />
+        <module name="seckill-message" />
+        <module name="seckill-order-api" />
+        <module name="seckill-goods-api" />
+        <module name="seckill-user-api" />
+        <module name="seckill-page" />
+        <module name="seckill-order" />
+        <module name="seckill-gateway" />
+        <module name="seckill-monitor" />
+        <module name="seckill-search-api" />
+        <module name="seckill-common" />
+        <module name="seckill-web" />
+        <module name="seckill-page-api" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="seckill-api" options="" />
+      <module name="seckill-common" options="-parameters" />
+      <module name="seckill-db" options="-parameters" />
+      <module name="seckill-gateway" options="-parameters" />
+      <module name="seckill-goods" options="-parameters" />
+      <module name="seckill-goods-api" options="-parameters" />
+      <module name="seckill-manager" options="-parameters" />
+      <module name="seckill-manager-api" options="-parameters" />
+      <module name="seckill-module" options="" />
+      <module name="seckill-order" options="-parameters" />
+      <module name="seckill-order-api" options="-parameters" />
+      <module name="seckill-page" options="-parameters" />
+      <module name="seckill-page-api" options="-parameters" />
+      <module name="seckill-search" options="-parameters" />
+      <module name="seckill-search-api" options="-parameters" />
+      <module name="seckill-service" options="" />
+      <module name="seckill-user" options="-parameters" />
+      <module name="seckill-user-api" options="-parameters" />
+      <module name="seckill-web" options="-parameters" />
+    </option>
+  </component>
+</project>
