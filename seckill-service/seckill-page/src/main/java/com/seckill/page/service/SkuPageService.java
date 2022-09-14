@@ -11,6 +11,11 @@ public interface SkuPageService {
      */
     void delHtml(String name, String htmlPath);
 
+    /***
+     * 删除所有商品静态页
+     */
+    void delAllHtml(String htmlPath);
+
     /****
      * 生成静态页
      * @param dataMap

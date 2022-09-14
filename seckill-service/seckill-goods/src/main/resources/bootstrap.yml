@@ -3,13 +3,6 @@ server:
 spring:
   application:
     name: seckill-goods
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://db-server:3306/seckill_goods?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: root
-  jackson:
-    time-zone: GMT+8
   cloud:
     nacos:
       config:
@@ -18,11 +11,39 @@ spring:
       discovery:
         #Nacos的注册地址
         server-addr: nacos-server:8848
+    alibaba:
+      seata:
+        tx-service-group: seata_seckill_transaction
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://db-server:3306/seckill_goods?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+  redis:
+    cluster:
+      nodes:
+        - redis-server:7001
+        - redis-server:7002
+        - redis-server:7003
+        - redis-server:7004
+        - redis-server:7005
+        - redis-server:7006
+  jackson:
+    time-zone: GMT+8
   main:
     allow-bean-definition-overriding: true
+#elaticjob
+elaticjob:
+  zookeeper:
+    server-lists: zk-server:2181
+    namespace: updatetask
+#配置动态任务的zk和namespace
+zkserver: zk-server:2181
+zknamespace: zknamesp
+
 logging:
   level:
     #root: debug开启dubug级别
     com.seckill.goods.dao: error
   pattern:
-    console: "%msg%n"
+    console: "[%d{HH:mm:ss}] - %msg%n"

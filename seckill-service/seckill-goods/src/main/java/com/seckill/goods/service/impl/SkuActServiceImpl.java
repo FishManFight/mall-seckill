@@ -9,6 +9,8 @@ import com.seckill.goods.pojo.Activity;
 import com.seckill.goods.pojo.Sku;
 import com.seckill.goods.pojo.SkuAct;
 import com.seckill.goods.service.SkuActService;
+import com.seckill.page.feign.SkuPageFeign;
+import com.seckill.search.feign.SkuInfoFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -28,7 +30,11 @@ public class SkuActServiceImpl implements SkuActService {
 
     @Autowired
     private SkuMapper skuMapper;
+    @Autowired
+    private SkuInfoFeign skuInfoFeign;
 
+    @Autowired
+    private SkuPageFeign skuPageFeign;
 
     /**
      * SkuAct条件+分页查询
@@ -149,7 +155,13 @@ public class SkuActServiceImpl implements SkuActService {
             newSkuAct.setActivityId(skuAct.getActivityId());
             newSkuAct.setSkuId(sku.getId());
             skuActMapper.insertSelective(newSkuAct);
-
+            try {
+                // 添加数据到索引库
+                skuInfoFeign.modifySku(2, sku);
+                // 创建静态页
+                skuPageFeign.html(sku.getId());
+            } catch (Exception e) {
+            }
         }
     }
 
@@ -198,16 +210,18 @@ public class SkuActServiceImpl implements SkuActService {
             // 更新状态
             sku.setSeckillBegin(activity.getBegintime());
             sku.setSeckillEnd(activity.getEndtime());
-            sku.setSeckillPrice(sku.getPrice() - 10);
+            sku.setSeckillPrice(sku.getPrice() / 100);
             sku.setStatus("2");
             skuMapper.updateByPrimaryKeySelective(sku);
             // 添加数据到索引库
-
+            skuInfoFeign.modifySku(2, sku);
+            // 创建静态页
+            skuPageFeign.html(sku.getId());
         }
     }
 
     @Override
     public void deleteAllIndex() {
-
+        skuInfoFeign.deleteAll();
     }
 }

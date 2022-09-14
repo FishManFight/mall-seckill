@@ -7,7 +7,7 @@ import com.seckill.db.util.IdWorker;
 import com.seckill.order.pojo.Order;
 import com.seckill.order.pojo.OrderVo;
 import com.seckill.order.service.OrderService;
-import com.seckill.web.framework.Result;
+import com.seckill.common.util.Result;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,7 +24,6 @@ public class OrderController {
 
     @Autowired
     private IdWorker idWorker;
-
 
     /****
      * 添加订单

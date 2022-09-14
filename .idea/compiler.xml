@@ -35,6 +35,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="seckill-api" options="" />
+      <module name="seckill-canal" options="-parameters" />
       <module name="seckill-common" options="-parameters" />
       <module name="seckill-db" options="-parameters" />
       <module name="seckill-gateway" options="-parameters" />
@@ -42,17 +43,22 @@
       <module name="seckill-goods-api" options="-parameters" />
       <module name="seckill-manager" options="-parameters" />
       <module name="seckill-manager-api" options="-parameters" />
+      <module name="seckill-message" options="-parameters" />
+      <module name="seckill-message-api" options="-parameters" />
       <module name="seckill-module" options="" />
+      <module name="seckill-monitor" options="-parameters" />
       <module name="seckill-order" options="-parameters" />
       <module name="seckill-order-api" options="-parameters" />
       <module name="seckill-page" options="-parameters" />
       <module name="seckill-page-api" options="-parameters" />
       <module name="seckill-search" options="-parameters" />
       <module name="seckill-search-api" options="-parameters" />
+      <module name="seckill-seata" options="-parameters" />
       <module name="seckill-service" options="" />
       <module name="seckill-user" options="-parameters" />
       <module name="seckill-user-api" options="-parameters" />
       <module name="seckill-web" options="-parameters" />
+      <module name="seckill-websocket" options="-parameters" />
     </option>
   </component>
 </project>

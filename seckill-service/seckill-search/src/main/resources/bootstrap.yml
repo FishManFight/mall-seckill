@@ -20,4 +20,4 @@ ribbon:
   ReadTimeout: 3000000
 logging:
   pattern:
-    console: "%msg%n"
+    console: "[%d{mm:ss}] - %msg%n"

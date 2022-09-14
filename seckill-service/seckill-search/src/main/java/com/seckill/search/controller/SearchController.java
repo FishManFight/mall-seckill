@@ -5,7 +5,7 @@ import com.seckill.common.util.StatusCode;
 import com.seckill.goods.pojo.Sku;
 import com.seckill.search.pojo.SkuInfo;
 import com.seckill.search.service.SkuInfoService;
-import com.seckill.web.framework.Result;
+import com.seckill.common.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;

@@ -46,15 +46,14 @@ public class JwtTokenUtil {
      * @param uid:唯一标识符
      * @param ttlMillis:有效期
      * @return
-     * @throws Exception
      */
-    public static String generateToken(String uid, Map<String, Object> payload, long ttlMillis, String secret) throws Exception {
+    public static String generateToken(String uid, Map<String, Object> payload, long ttlMillis, String secret) {
         SignatureAlgorithm signatureAlgorithm = SignatureAlgorithm.HS256;
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
         Key signingKey = new SecretKeySpec(secret.getBytes(), signatureAlgorithm.getJcaName());
 
-        Map<String, Object> header = new HashMap<String, Object>();
+        Map<String, Object> header = new HashMap<>();
         header.put("typ", "JWT");
         header.put("alg", "HS256");
         JwtBuilder builder = Jwts.builder().setId(uid)
@@ -74,7 +73,6 @@ public class JwtTokenUtil {
         }
         return builder.compact();
     }
-
 
     /***
      * 解密JWT令牌
@@ -97,17 +95,14 @@ public class JwtTokenUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        Map<String, Object> payload = new HashMap<>();
-        payload.put("username", "test");
-        payload.put("aaa", "ccc");
-        payload.put("bbb", "ddd");
-        String token = generateTokenUser(UUID.randomUUID().toString(), payload, 10000000L);
-        // String token = generateTokenAdmin(UUID.randomUUID().toString(), payload, 10000000L);
+        Map<String, Object> load = new HashMap<>();
+        load.put("abc", "def");
+        load.put("中文", "123");
+        String token = generateToken(UUID.randomUUID().toString(), load, 900000000L, SECRETUSER);
         System.out.println(token);
-
-        System.out.println(parseToken(token));
+        Map<String, Object> parseToken = parseToken(token);
+        System.out.println(parseToken);
     }
-
 }
 
 

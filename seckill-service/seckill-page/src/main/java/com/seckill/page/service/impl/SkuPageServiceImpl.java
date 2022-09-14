@@ -25,6 +25,20 @@ public class SkuPageServiceImpl extends BaseProcess implements SkuPageService {
     }
 
     /***
+     * 删除全部静态页
+     * @param htmlPath 静态页存储路径
+     */
+    @Override
+    public void delAllHtml(String htmlPath) {
+        File file = new File(htmlPath);
+        for (File delFile : file.listFiles()) {
+            if (delFile.getName().endsWith(".html")) {
+                delFile.delete();
+            }
+        }
+    }
+
+    /***
      * 生成静态页
      * @param dataMap
      */

@@ -79,17 +79,17 @@ public class SkuInfoServiceImpl implements SkuInfoService {
     public void addAll() {
         // 分页数据,从第1页开始，每页处理500条
         int pageNum = 1;
-        int size = 500;
+        int pageSize = 500;
 
         // 1.查询总记录数
         Integer total = skuFeign.count();
 
         // 2.根据总记录数计算总页数
-        int totalPages = total % size == 0 ? total / size : (total / size) + 1;
+        int totalPages = total % pageSize == 0 ? total / pageSize : (total / pageSize) + 1;
 
         // 3.循环总页数，查询每页的数据
         for (int i = 0; i < totalPages; i++) {
-            List<Sku> skus = skuFeign.list(pageNum, size);
+            List<Sku> skus = skuFeign.list(pageNum, pageSize);
             // 4.将数据转换成SkuInfo
             List<SkuInfo> skuInfos = JSON.parseArray(JSON.toJSONString(skus), SkuInfo.class);
             // 将开始时间转换成字符串类型

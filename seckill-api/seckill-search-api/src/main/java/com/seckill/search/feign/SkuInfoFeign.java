@@ -2,7 +2,7 @@ package com.seckill.search.feign;
 
 import com.seckill.goods.pojo.Sku;
 import com.seckill.search.pojo.SkuInfo;
-import com.seckill.web.framework.Result;
+import com.seckill.common.util.Result;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 

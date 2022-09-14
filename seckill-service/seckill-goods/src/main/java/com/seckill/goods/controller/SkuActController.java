@@ -4,7 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.seckill.common.util.StatusCode;
 import com.seckill.goods.pojo.SkuAct;
 import com.seckill.goods.service.SkuActService;
-import com.seckill.web.framework.Result;
+import com.seckill.common.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

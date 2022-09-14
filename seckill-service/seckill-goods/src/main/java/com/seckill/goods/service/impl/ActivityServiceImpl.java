@@ -9,6 +9,8 @@ import com.seckill.goods.dao.SeckillTimeMapper;
 import com.seckill.goods.pojo.Activity;
 import com.seckill.goods.pojo.SeckillTime;
 import com.seckill.goods.service.ActivityService;
+import com.seckill.goods.task.dynamictask.DynamicTask;
+import com.seckill.goods.task.dynamictask.ElasticjobDynamicConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -55,7 +57,7 @@ public class ActivityServiceImpl implements ActivityService {
             act.setSeckillTime(seckillTime);
             act.setSeckillTimeList(seckillTimes);
         }
-        return new PageInfo<Activity>(activities);
+        return new PageInfo<>(activities);
     }
 
     /**
@@ -70,7 +72,7 @@ public class ActivityServiceImpl implements ActivityService {
         // 静态分页
         PageHelper.startPage(page, size);
         // 分页查询
-        return new PageInfo<Activity>(activityMapper.selectAll());
+        return new PageInfo<>(activityMapper.selectAll());
     }
 
     /**
@@ -182,6 +184,8 @@ public class ActivityServiceImpl implements ActivityService {
         activityMapper.updateByPrimaryKeySelective(activity);
     }
 
+    @Autowired
+    private ElasticjobDynamicConfig elasticjobDynamicConfig;
 
     /**
      * 增加Activity
@@ -206,7 +210,7 @@ public class ActivityServiceImpl implements ActivityService {
         activityMapper.insertSelective(activity);
 
         // 定时任务调度，将活动结束时间作为任务开始执行时间
-        // elasticjobDynamicConfig.addDynamicTask(activity.getId(), ElasticjobDynamicConfig.date2cron(activity.getEndtime()),1,activity.getId(),new DynamicTask());
+        elasticjobDynamicConfig.addDynamicTask(activity.getId(), ElasticjobDynamicConfig.date2cron(activity.getEndtime()), 1, activity.getId(), new DynamicTask());
     }
 
     /**

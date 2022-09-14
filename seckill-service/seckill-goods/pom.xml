@@ -27,11 +27,41 @@
             <artifactId>seckill-db</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <!--api-->
         <dependency>
             <groupId>com.seckill</groupId>
-            <artifactId>seckill-goods-api</artifactId>
+            <artifactId>seckill-search-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.seckill</groupId>
+            <artifactId>seckill-page-api</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!-- ElasticJobAutoConfiguration自动配置类作用-->
+        <dependency>
+            <groupId>com.github.kuhn-he</groupId>
+            <artifactId>elastic-job-lite-spring-boot-starter</artifactId>
+            <version>2.1.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-recipes</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.curator</groupId>
+            <artifactId>curator-framework</artifactId>
+            <version>2.10.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.seckill</groupId>
+            <artifactId>seckill-seata</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

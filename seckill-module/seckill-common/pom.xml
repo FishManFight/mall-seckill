@@ -14,11 +14,12 @@
         工具工程
     </description>
     <dependencies>
-        <!-- <dependency> -->
-        <!--     <groupId>com.seckill</groupId> -->
-        <!--     <artifactId>seckill-web</artifactId> -->
-        <!--     <version>0.0.1-SNAPSHOT</version> -->
-        <!-- </dependency> -->
+        <!-- redis 使用-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 
 </project>

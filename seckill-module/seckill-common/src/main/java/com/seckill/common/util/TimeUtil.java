@@ -1140,5 +1140,9 @@ public class TimeUtil {
         calendar.set(Calendar.SECOND, 0);
         Date zero = calendar.getTime();
         System.out.println(zero);
+        String yesterday = TimeUtil.date2FormatYYYYMMDDHHmmss(TimeUtil.addDateHour(new Date(), -24));
+        System.out.println("yesterday： " + yesterday);
+        String onehourago = TimeUtil.date2FormatYYYYMMDDHHmmss(TimeUtil.addDateHour(new Date(), -1));
+        System.out.println("onehourago： " + onehourago);
     }
 }

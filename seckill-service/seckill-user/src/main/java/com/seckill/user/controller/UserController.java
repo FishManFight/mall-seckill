@@ -5,7 +5,7 @@ import com.seckill.common.util.JwtTokenUtil;
 import com.seckill.common.util.StatusCode;
 import com.seckill.user.pojo.User;
 import com.seckill.user.service.UserService;
-import com.seckill.web.framework.Result;
+import com.seckill.common.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.DigestUtils;
 import org.springframework.util.ObjectUtils;

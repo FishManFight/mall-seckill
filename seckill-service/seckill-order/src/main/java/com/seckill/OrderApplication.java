@@ -8,7 +8,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-@EnableFeignClients(basePackages = {"com.seckill.goods.feign"})
+@EnableFeignClients(basePackages = {"com.seckill.goods.feign", "com.seckill.message.feign"})
 @MapperScan(basePackages = "com.seckill.order.dao")
 public class OrderApplication {
 

@@ -5,7 +5,7 @@ import com.seckill.common.util.StatusCode;
 import com.seckill.common.util.TimeUtil;
 import com.seckill.goods.pojo.SeckillTime;
 import com.seckill.goods.service.SeckillTimeService;
-import com.seckill.web.framework.Result;
+import com.seckill.common.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

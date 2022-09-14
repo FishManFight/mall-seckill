@@ -11,10 +11,10 @@ public class SkuAct implements Serializable {
 
     @Id
     @Column(name = "sku_id")
-    private String skuId;//
+    private String skuId;
 
     @Column(name = "activity_id")
-    private String activityId;//
+    private String activityId;
 
     // 是否删除
     @Column(name = "is_del")

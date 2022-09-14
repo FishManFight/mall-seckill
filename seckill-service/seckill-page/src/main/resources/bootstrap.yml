@@ -2,10 +2,12 @@ server:
   port: 18087
 logging:
   pattern:
-    console: "%msg%n"
+    console: "[%d{mm:ss}] - %msg%n"
 spring:
   application:
     name: seckill-page
+  jackson:
+    time-zone: GMT+8
   cloud:
     nacos:
       config:
@@ -23,6 +25,7 @@ spring:
     cache: false  #关闭模板缓存，方便测试
     settings:
       template_update_delay: 0  #检查模板更新延迟时间，设置为0表示立即检查，如果时间大于0会有缓存不方便进行模板测试
+      classic_compatible: true #兼容传统模式
     template-loader-path: classpath:/templates
     charset: UTF-8
     check-template-location: true
@@ -38,5 +41,5 @@ ribbon:
   ConnectTimeout: 30000
 
 #静态页位置
-htmlPath: C:\Users\wenhao\IdeaProjects\mall-seckill\seckill-service\seckill-page\src\main\resources\static
+htmlPath: C:\Users\wenhao\IdeaProjects\.file\mall-seckill\page\html
 #htmlPath: /usr/local/server/web/html/web/items

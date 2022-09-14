@@ -3,7 +3,7 @@ package com.seckill.manager.controller;
 import com.seckill.manager.pojo.Admin;
 import com.seckill.manager.service.AdminServer;
 import com.seckill.common.util.JwtTokenUtil;
-import com.seckill.web.framework.Result;
+import com.seckill.common.util.Result;
 import com.seckill.common.util.StatusCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

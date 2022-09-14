@@ -62,7 +62,7 @@ public class SkuInfo {
     // 品牌名称
     private String brandName;
 
-    // 开始时间，用于做搜索
+    // 开始时间
     @Field(type = FieldType.Keyword)
     private String bgtime;
 

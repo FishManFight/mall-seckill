@@ -135,6 +135,47 @@ public class Sku implements Serializable {
     @Transient
     private String bgtime;
 
+    @Override
+    public String toString() {
+        return "Sku{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", seckillPrice=" + seckillPrice +
+                ", num=" + num +
+                ", alertNum=" + alertNum +
+                ", image='" + image + '\'' +
+                ", images='" + images + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                ", seckillBegin=" + seckillBegin +
+                ", seckillEnd=" + seckillEnd +
+                ", spuId='" + spuId + '\'' +
+                ", category1Id=" + category1Id +
+                ", category2Id=" + category2Id +
+                ", category3Id=" + category3Id +
+                ", category1Name='" + category1Name + '\'' +
+                ", category2Name='" + category2Name + '\'' +
+                ", category3Name='" + category3Name + '\'' +
+                ", brandId=" + brandId +
+                ", brandName='" + brandName + '\'' +
+                ", spec='" + spec + '\'' +
+                ", saleNum=" + saleNum +
+                ", commentNum=" + commentNum +
+                ", status='" + status + '\'' +
+                ", islock=" + islock +
+                ", startDate=" + startDate +
+                ", startTimestr='" + startTimestr + '\'' +
+                ", len=" + len +
+                ", seckillNum=" + seckillNum +
+                ", audit=" + audit +
+                ", count=" + count +
+                ", isdel=" + isdel +
+                ", points=" + points +
+                ", bgtime='" + bgtime + '\'' +
+                '}';
+    }
+
     public String getBgtime() {
         if (seckillBegin != null && bgtime == null) {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHH");

@@ -11,12 +11,6 @@
     <artifactId>seckill-page</artifactId>
 
     <dependencies>
-        <!--依赖web-->
-        <dependency>
-            <groupId>com.seckill</groupId>
-            <artifactId>seckill-web</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
 
         <!--api-->
         <dependency>

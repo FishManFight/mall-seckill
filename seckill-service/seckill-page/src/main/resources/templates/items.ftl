@@ -46,8 +46,8 @@
             </div>
             <div style="flex: 1; padding-top: 15px;padding-left: 30px;">
                 <div><span style="font-size: 12px;">￥</span><span
-                            style="font-size: 20px;font-weight: bold">${seckillPrice}</span></div>
-                <div style="text-decoration: line-through;font-size: 12px;"><span>￥</span><span>${price}</span></div>
+                            style="font-size: 20px;font-weight: bold">${sku.seckillPrice}</span></div>
+                <div style="text-decoration: line-through;font-size: 12px;"><span>￥</span><span>${sku.price}</span></div>
             </div>
             <div style="padding-top: 10px;padding-right: 15px;font-size: 12px;">
                 <div v-if="isbegin==1" id="time" class="time">
@@ -127,8 +127,8 @@
     </footer>
 </div>
 <!-- 引入组件库 -->
-<script src="vue.js"></script>
-<script type="text/javascript" src="axios.js"></script><!-- axios交互-->
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script><!-- axios交互-->
 <script>
     var app = new Vue({
         el: '#app',
@@ -226,14 +226,14 @@
                     var instance = axios.create({});
                     instance.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                     //发送请求
-                    instance.post(`http://mall.seckill.com/api/order/add/${sku.id}`).then(function (response) {
+                    instance.post(`http://192.168.200.128/lua/order/add/?id=${sku.id}`).then(function (response) {
                         console.log(response)
                         //跳转到个人中心
-                        location.href = 'http://mall.seckill.com/#/user';
+                        location.href = 'http://192.168.200.128/#/user';
                     })
                 } else {
                     //跳转登录
-                    location.href = 'http://mall.seckill.com/#/login';
+                    location.href = 'http://192.168.200.128/#/login';
                 }
             }
         },

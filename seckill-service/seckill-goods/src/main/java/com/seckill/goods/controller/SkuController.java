@@ -4,7 +4,8 @@ import com.github.pagehelper.PageInfo;
 import com.seckill.common.util.StatusCode;
 import com.seckill.goods.pojo.Sku;
 import com.seckill.goods.service.SkuService;
-import com.seckill.web.framework.Result;
+import com.seckill.goods.task.statictask.ModifySeckillTimes;
+import com.seckill.common.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,10 +19,13 @@ public class SkuController {
     @Autowired
     private SkuService skuService;
 
+    @Autowired
+    private ModifySeckillTimes modifySeckillTimes;
 
     // 初始化
     @GetMapping(value = "/init")
     private Result init() throws Exception {
+        modifySeckillTimes.init();
         return new Result(true, StatusCode.OK, "初始化成功！");
     }
 

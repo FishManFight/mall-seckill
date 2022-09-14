@@ -73,4 +73,4 @@ management:
 
 logging:
   pattern:
-    console: "%msg%n"
+    console: "[%d{mm:ss}] - %msg%n"
