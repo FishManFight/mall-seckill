@@ -6,6 +6,7 @@ import com.seckill.page.feign.SkuPageFeign;
 import com.seckill.search.feign.SkuInfoFeign;
 import com.seckill.search.pojo.SkuInfo;
 import lombok.SneakyThrows;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import top.javatool.canal.client.annotation.CanalTable;

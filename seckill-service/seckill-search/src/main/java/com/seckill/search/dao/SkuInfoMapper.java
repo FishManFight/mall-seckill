@@ -13,4 +13,5 @@ public interface SkuInfoMapper extends ElasticsearchRepository<SkuInfo, String> 
      * @return
      */
     Page<SkuInfo> findByBgtime(String starttime, PageRequest of);
+    Page<SkuInfo> findByName(String name, PageRequest of);
 }

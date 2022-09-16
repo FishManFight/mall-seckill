@@ -127,7 +127,7 @@
     </footer>
 </div>
 <!-- 引入组件库 -->
-<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script><!-- axios交互-->
 <script>
     var app = new Vue({
@@ -136,7 +136,8 @@
             message: '',
             hours: '',
             minutes: '',
-            seconds: ''
+            seconds: '',
+            defaultImage:''
         },
         methods: {
             /***
@@ -149,7 +150,7 @@
                 let nowtimes = new Date().getTime();
                 if (nowtimes > endtimes) {
                     this.message = '活动已结束！';
-                    this.isbegin = 0;
+                    this.isbegin = -1;
                     return;
                 }
                 //时间差
@@ -217,23 +218,44 @@
                 let tm2 = new Date("${sku.seckillEnd?string('yyyy-MM-dd HH:mm:ss')}").getTime();
                 this.timeCalculate(tm1, tm2);
             },
+            //初始化创建websocket链接
+            initWebSocket(uname){
+                //实现化WebSocket对象，指定要连接的服务器地址与端口  建立连接
+                this.socket = new WebSocket("ws://localhost:28082/ws/"+uname);
+                //打开事件
+                this.socket.onopen = function() {
+                    console.log("Socket 已打开");
+                };
+                //接收消息
+                this.socket.onmessage=this.loadMessage;
+            },
+            //后端消息接收
+            loadMessage(e){
+                console.log(e.data)
+            },
             //下单
             addOrder: function () {
                 //获取令牌
+                localStorage.setItem("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiMDlmNWQ3Zi0yMDUwLTQ0ZTAtYmZmYS1lYzRiOGZjYTVkYmUiLCJpYXQiOjE2NjMzMDY5MzEsImlzcyI6ImIwOWY1ZDdmLTIwNTAtNDRlMC1iZmZhLWVjNGI4ZmNhNWRiZSIsInN1YiI6ImIwOWY1ZDdmLTIwNTAtNDRlMC1iZmZhLWVjNGI4ZmNhNWRiZSIsInBob25lIjoiMTg4ODg4ODg4OCIsIm5hbWUiOiLmtYvor5UiLCJ1c2VybmFtZSI6InRlc3QiLCJleHAiOjE2NjQyMDY5MzF9.niAMk8SRAffl9sLkvdM96UIKhVP2aMyXa2y9UiUsbDs")
                 var token = localStorage.getItem("token");
                 if (token != null && token != '') {
                     //将令牌传给后台  /lua/order/add
                     var instance = axios.create({});
                     instance.defaults.headers.common['Authorization'] = 'Bearer ' + token;
                     //发送请求
-                    instance.post(`http://192.168.200.128/lua/order/add/?id=${sku.id}`).then(function (response) {
+                    instance.post(`http://192.168.200.128/lua/order/add?id=${sku.id}`).then(function (response) {
                         console.log(response)
                         //跳转到个人中心
-                        location.href = 'http://192.168.200.128/#/user';
+                        // location.href = 'http://192.168.200.128/#/user';
+                        if(response.data.code==202){
+                            //如果在排队，就建立链接
+                            app.initWebSocket(response.data.username);
+                        }
                     })
                 } else {
                     //跳转登录
-                    location.href = 'http://192.168.200.128/#/login';
+                    // location.href = 'http://192.168.200.128/#/login';
+                    console.log("未登录！")
                 }
             }
         },

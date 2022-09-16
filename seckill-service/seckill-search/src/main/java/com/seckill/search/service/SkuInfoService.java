@@ -10,7 +10,8 @@ public interface SkuInfoService {
     /***
      * 秒杀商品搜索
      */
-    Page<SkuInfo> search(Map<String, String> searchMap);
+    Page<SkuInfo> searchByStarttime(Map<String, String> searchMap);
+    Page<SkuInfo> searchByName(Map<String, String> searchMap);
 
     /***
      * 增量操作  ->删除索引   type=3

@@ -25,7 +25,12 @@ public class SearchController {
      */
     @GetMapping
     public Page<SkuInfo> search(@RequestParam(required = false) Map<String, String> searchMap) {
-        return skuInfoService.search(searchMap);
+        return skuInfoService.searchByStarttime(searchMap);
+    }
+
+    @GetMapping(value = "/name")
+    public Page<SkuInfo> searchByName(@RequestParam(required = false) Map<String, String> searchMap) {
+        return skuInfoService.searchByName(searchMap);
     }
 
     /***

@@ -15,45 +15,53 @@ public class RedissonDistributedLocker implements DistributedLocker {
 
     /***
      * 加锁,会一直循环加锁，直到拿到锁
-     * @param lockkey
+     * @param lockKey
      * @return
      */
     @Override
-    public RLock lock(String lockkey) {
-        RLock lock = redissonClient.getLock(lockkey);
+    public RLock lock(String lockKey) {
+        RLock lock = redissonClient.getLock(lockKey);
         lock.lock();
         return lock;
     }
 
     /***
-     * 加锁,在指定时间内拿不到锁就会放弃
-     * @param lockkey
+     * 加锁,在指定时间内拿不到锁就会放弃,单位为秒
+     * @param lockKey
      * @return
      */
     @Override
-    public RLock lock(String lockkey, long timeout) {
-        RLock lock = redissonClient.getLock(lockkey);
+    public RLock lock(String lockKey, long timeout) {
+        RLock lock = redissonClient.getLock(lockKey);
         lock.lock(timeout, TimeUnit.SECONDS);
         return lock;
     }
 
     /***
      * 加锁,在指定时间内拿不到锁就会放弃
-     * @param lockkey
+     * timeout为加锁时间，时间单位由unit确定
+     * @param lockKey
      * @return
      */
     @Override
-    public RLock lock(String lockkey, long timeout, TimeUnit unit) {
+    public RLock lock(String lockKey, long timeout, TimeUnit unit) {
         return null;
     }
 
     /***
-     * 加锁,在指定时间内拿不到锁就会放弃,如果拿到锁，锁最终有效时间为leasetime
-     * @param lockkey
+     * tryLock()，马上返回，拿到lock就返回true，不然返回false。
+     * 带时间限制的tryLock()，拿不到lock，就等一段时间，超时返回false.
+     * @param lockKey
      * @return
      */
     @Override
-    public boolean tryLock(String lockkey, long timeout, long leasetime, TimeUnit unit) {
+    public boolean tryLock(String lockKey, long waitTime, long leaseTime, TimeUnit unit) {
+        RLock lock = redissonClient.getLock(lockKey);
+        try {
+            return lock.tryLock(waitTime, leaseTime, unit);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

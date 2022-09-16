@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.concurrent.TimeUnit;
+
 @RestController
 @RequestMapping(value = "/redisson")
 public class RedissonController {
@@ -20,17 +22,19 @@ public class RedissonController {
      */
     @GetMapping(value = "/lock/{time}")
     public String lock(@PathVariable(value = "time") Long time) throws InterruptedException {
-        System.out.println("当前休眠标识时间：" + time);
-
-        // 获取锁
-        RLock rlock = redissonDistributedLocker.lock("UUUUU");
-        System.out.println("执行休眠：" + time);
-
-        Thread.sleep(time);
-
-        System.out.println("休眠完成，准备释放锁：" + time);
-        // 释放锁
-        redissonDistributedLocker.unLocke(rlock);
+        boolean bo = redissonDistributedLocker.tryLock("lockkey", time, time, TimeUnit.SECONDS);
+        System.out.println(bo);
+        // System.out.println("当前休眠标识时间：" + time);
+        //
+        // // 获取锁
+        // RLock rlock = redissonDistributedLocker.lock("UUUUU");
+        // System.out.println("执行休眠：" + time);
+        //
+        // Thread.sleep(time);
+        //
+        // System.out.println("休眠完成，准备释放锁：" + time);
+        // // 释放锁
+        // redissonDistributedLocker.unLocke(rlock);
         return "OK";
     }
 }

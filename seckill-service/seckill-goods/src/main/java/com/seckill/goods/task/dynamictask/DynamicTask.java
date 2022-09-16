@@ -38,7 +38,7 @@ public class DynamicTask implements SimpleJob {
         SkuAct skuAct = new SkuAct();
         skuAct.setActivityId(id);
         List<SkuAct> skuActs = skuActMapper.select(skuAct);
-        List<String> ids = new ArrayList<String>();
+        List<String> ids = new ArrayList<>();
         for (SkuAct act : skuActs) {
             ids.add(act.getSkuId());
         }

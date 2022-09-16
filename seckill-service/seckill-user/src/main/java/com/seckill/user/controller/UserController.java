@@ -29,7 +29,7 @@ public class UserController {
      * @throws Exception
      */
     @PostMapping(value = "/login")
-    public Result login(@RequestBody Map<String, String> dataMap) throws Exception {
+    public Result login(@RequestParam Map<String, String> dataMap) throws Exception {
         // 1.根据用户名查询用户信息
         User user = userService.findByUsername(dataMap.get("username"));
         // 2.用户不存在

@@ -19,4 +19,4 @@ spring:
     allow-bean-definition-overriding: true
 logging:
   pattern:
-    console: "[%d{mm:ss}] - %msg%n"
+    console: "[%d{HH:mm:ss}] - %msg%n"

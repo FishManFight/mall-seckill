@@ -33,7 +33,7 @@ public class SkuInfoServiceImpl implements SkuInfoService {
      * @return
      */
     @Override
-    public Page<SkuInfo> search(Map<String, String> searchMap) {
+    public Page<SkuInfo> searchByStarttime(Map<String, String> searchMap) {
         // 时间  starttime
         String starttime = searchMap.get("starttime");
         if (!StringUtils.isEmpty(starttime)) {
@@ -41,6 +41,12 @@ public class SkuInfoServiceImpl implements SkuInfoService {
         }
         // 根据bgtime实现分页搜索
         return skuInfoMapper.findByBgtime(starttime, PageRequest.of(pageConveter(searchMap) - 1, 20));// 当前页对应的信息,bgtime
+    }
+
+    @Override
+    public Page<SkuInfo> searchByName(Map<String, String> searchMap) {
+        String name = searchMap.get("name");
+        return skuInfoMapper.findByName(name, PageRequest.of(pageConveter(searchMap) - 1, 20));
     }
 
     /***

@@ -22,9 +22,6 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @Autowired
-    private IdWorker idWorker;
-
     /****
      * 添加订单
      */
@@ -40,10 +37,7 @@ public class OrderController {
         }
         // 封装Order
         Order order = new Order();
-        order.setId("No" + idWorker.nextId());
         order.setSkuId(id);
-        order.setCreateTime(new Date());
-        order.setUpdateTime(order.getCreateTime());
         order.setUsername(username);
         order.setTotalNum(1);
         // 添加订单

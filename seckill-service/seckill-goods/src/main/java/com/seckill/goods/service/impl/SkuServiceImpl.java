@@ -128,10 +128,10 @@ public class SkuServiceImpl implements SkuService {
             // redisTemplate.boundHashOps(key).put("info",info);
 
             // 2.数据合并
-            Map<String, Object> dataMap = new HashMap<String, Object>();
+            Map<String, Object> dataMap = new HashMap<>();
             dataMap.put("num", currentSku.getSeckillNum());
             // 存储商品信息
-            Map<String, Object> info = new HashMap<String, Object>();
+            Map<String, Object> info = new HashMap<>();
             info.put("id", id);
             info.put("price", currentSku.getSeckillPrice());
             info.put("name", currentSku.getName());

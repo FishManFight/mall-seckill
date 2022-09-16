@@ -61,10 +61,12 @@ public class OrderServiceImpl implements OrderService {
         // 2.递减成功->下单->记录当前用户抢单的时间点，24小时内不能抢购该商品
         if (dcount.getCode() == StatusCode.DECOUNT_OK) {
             // 测试分布式事务，制造异常
-            int o = 1 / 0;
+            // int e = 1 / 0;
             Sku sku = dcount.getData();
             // 下单
-            // order.setId("No" + idWorker.nextId());
+            order.setId("No" + idWorker.nextId());
+            order.setCreateTime(new Date());
+            order.setUpdateTime(order.getCreateTime());
             order.setOrderStatus("0");
             order.setPayStatus("0");
             order.setConsignStatus("0");
@@ -114,11 +116,11 @@ public class OrderServiceImpl implements OrderService {
 
         // Redis中对应的key
         String key = "SKU_" + id;
-        String lockkey = "LOCKSKU_" + id;
+        String lockKey = "LOCKSKU_" + id;
         String userKey = "USER" + username + "ID" + id;
 
         // 如果key在redis缓存，则表示商品信息在Redis中进行操作
-        boolean bo = redissonDistributedLocker.tryLock(lockkey, 10, 10, TimeUnit.MINUTES);
+        boolean bo = redissonDistributedLocker.tryLock(lockKey, 60, 60, TimeUnit.SECONDS);
         if (bo) {
             if (redisTemplate.hasKey(key)) {
                 // 获取商品数量
@@ -128,7 +130,7 @@ public class OrderServiceImpl implements OrderService {
                     // 商品售罄通知
                     messageMap.put("code", 20001);
                     messageMap.put("message", "商品已售罄");
-                    // messageFeign.send(username, JSON.toJSONString(messageMap));
+                    messageFeign.send(username, JSON.toJSONString(messageMap));
                     return;
                 }
                 Result<Sku> skuResult = skuFeign.findById(id);
@@ -136,10 +138,10 @@ public class OrderServiceImpl implements OrderService {
 
                 // 1.创建Order
                 Order order = new Order();
-                order.setTotalNum(1);
+                order.setId("No" + idWorker.nextId());
                 order.setCreateTime(new Date());
                 order.setUpdateTime(order.getCreateTime());
-                order.setId("No" + idWorker.nextId());
+                order.setTotalNum(1);
                 order.setOrderStatus("0");
                 order.setPayStatus("0");
                 order.setConsignStatus("0");
@@ -147,18 +149,19 @@ public class OrderServiceImpl implements OrderService {
                 order.setName(sku.getName());
                 order.setPrice(sku.getSeckillPrice() * order.getTotalNum());
                 orderMapper.insertSelective(order);
-
                 // 2.Redis中对应的num递减
                 num--;
+                redisTemplate.boundHashOps(key).put("num", num);
                 if (num == 0) {
+                    // 同步数据到数据库，秒杀数量归零
                     skuFeign.zero(id);
                 }
-
                 // 2.清理用户排队信息
-                Map<String, Object> allMap = new HashMap<String, Object>();
-                allMap.put(userKey, 0);
-                allMap.put("num", num);
-                redisTemplate.boundHashOps(key).putAll(allMap);
+                redisTemplate.boundHashOps(key).delete(userKey);
+                // Map<String, Object> allMap = new HashMap<>();
+                // allMap.put(userKey, 0);
+                // allMap.put("num", num);
+                // redisTemplate.boundHashOps(key).putAll(allMap);
                 // 3.记录用户购买过该商品,24小时后过期
                 redisTemplate.boundValueOps(userKey).set("");
                 redisTemplate.expire(userKey, 1, TimeUnit.MINUTES);
@@ -170,7 +173,7 @@ public class OrderServiceImpl implements OrderService {
             }
 
             // 释放锁
-            redissonDistributedLocker.unLock(lockkey);
+            redissonDistributedLocker.unLock(lockKey);
             return;
         }
 
