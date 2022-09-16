@@ -17,7 +17,7 @@ public class NettyWebSocketServer {
     /****
      * 定义一个Map存储所有会话
      */
-    private static Map<String, Session> sessionMap = new HashMap<String, Session>();
+    private static Map<String, Session> sessionMap = new HashMap<>();
 
     @Autowired
     private RedisTemplate redisTemplate;

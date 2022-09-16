@@ -2,7 +2,7 @@ server:
   port: 18087
 logging:
   pattern:
-    console: "[%d{mm:ss}] - %msg%n"
+    console: "[%d{HH:mm:ss}] - %msg%n"
 spring:
   application:
     name: seckill-page

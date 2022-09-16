@@ -17,7 +17,7 @@ ribbon:
 #日志
 logging:
   pattern:
-    console: "[%d{mm:ss}] - %msg%n"
+    console: "[%d{HH:mm:ss}] - %msg%n"
   level:
     root: error
 #Canal配置
